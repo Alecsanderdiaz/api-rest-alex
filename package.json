@@ -1,7 +1,7 @@
 {
-  "name": "proyecto",
+  "name": "api-rest",
   "version": "1.0.0",
-  "description": "Proyecto API RESTful con Node.js y Express",
+  "description": "Proyecto de API RESTful con Node.js y Express",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
