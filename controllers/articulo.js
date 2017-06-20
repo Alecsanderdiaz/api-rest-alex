@@ -5,11 +5,11 @@ const Articulo = require('../models/articulo')
 function getArticulo (req, res) {
 	let articuloId = req.params.articuloId
 
-	Articulo.findById(articuloId, (err, product) => {
+	Articulo.findById(articuloId, (err, articulo) => {
 		if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
-		if (!product) return res.status(404).send({messade: `El producto no existe`})
+		if (!articulo) return res.status(404).send({messade: `El articulo no existe`})
 
-		res.status(200).send({ product }) // Bondad de Ecmascript6 product: product
+		res.status(200).send({ articulo }) // Bondad de Ecmascript6 product: product
 	})	
 }
 
@@ -27,9 +27,9 @@ function updateArticulo (req, res) {
 	let update = req.body
 
 	Articulo.findByIdAndUpdate(articuloId, update, (err, articuloUpdate) =>{
-		if (err) return res.status(500).send({message: `Error al actualizar el producto: ${err}`})
+		if (err) return res.status(500).send({message: `Error al actualizar el articulo: ${err}`})
 
-		res.status(200).send({product: articuloUpdate})
+		res.status(200).send({articulo: articuloUpdate})
 	})
 }
 
@@ -37,11 +37,11 @@ function deleteArticulo (req, res) {
 	let articuloId = req.params.articuloId
 
 	Articulo.findById(articuloId, (err, articulo) => {
-		if (err) return res.status(500).send({message: `Error al borrar el producto: ${err}`})
+		if (err) return res.status(500).send({message: `Error al borrar el articulo: ${err}`})
 		
 		articulo.remove(err => {
-			if (err) return res.status(500).send({message: `Error al borrar el producto: ${err}`})
-			res.status(200).send({ message: 'El producto ha sido borrado.' })
+			if (err) return res.status(500).send({message: `Error al borrar el articulo: ${err}`})
+			res.status(200).send({ message: 'El articulo ha sido borrado.' })
 		})
 	})	
 }
