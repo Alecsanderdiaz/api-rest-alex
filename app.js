@@ -12,7 +12,9 @@ app.use(bodyParser.json())
 //   defaultLayout: 'default',
 //   extname: '.hbs'
 // }))
-app.set('view engine', '.hbs')
+// app.set('view engine', '.hbs')
+
+app.set("json spaces", 4)
 
 app.use('/api', api)
 // app.get('/login', (req, res) => {
