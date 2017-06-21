@@ -2,8 +2,9 @@
 
 const express = require('express')
 const articuloCtrl = require('../controllers/articulo')
-const commentCtrl = require('../controllers/comments')
+const commentCtrl = require('../controllers/comment')
 const categoryCtrl = require('../controllers/category')
+const tagCtrl = require('../controllers/tag')
 // const userCtrl = require('../controllers/user')
 // const auth = require('../middlewares/auth')
 const api = express.Router()
@@ -17,6 +18,8 @@ api.delete('/articulo/:articuloId', articuloCtrl.deleteArticulo)
 api.post('/articulo/:articuloId', commentCtrl.saveComment)
 // Category
 api.post('/category', categoryCtrl.saveCategory)
+// Tag
+api.post('/tag', tagCtrl.saveTag)
 // api.post('/signup', userCtrl.signUp)
 // api.post('/signin', userCtrl.signIn)
 // api.get('/private', auth, (req, res) => {

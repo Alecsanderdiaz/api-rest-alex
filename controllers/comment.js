@@ -1,6 +1,6 @@
 'user strict'
 
-const Comment = require('../models/comments')
+const Comment = require('../models/comment')
 
 function saveComment (req, res) {
 	// console.log('POST')

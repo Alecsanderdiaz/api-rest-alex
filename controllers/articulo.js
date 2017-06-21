@@ -1,7 +1,8 @@
 'user strict'
 
 const Articulo = require('../models/articulo'),
-	Category = require('../models/category')
+	Category = require('../models/category'),
+	Tag = require('../models/tag')
 
 function getArticulo (req, res) {
 	let articuloId = req.params.articuloId
@@ -12,7 +13,9 @@ function getArticulo (req, res) {
 
 		Category.populate(articulo, {path: "category"}, (err, articulo) => {
 			console.log('Deberias mostrarme el nombre de la categoria')
-			res.status(200).send({ articulo }) // Bondad de Ecmascript6 product: product
+			Tag.populate(articulo, {path: "tags"}, (err, articulo) => {
+				res.status(200).send({ articulo }) // Bondad de Ecmascript6 product: product
+			})
 		})
 		
 	})	
@@ -53,13 +56,16 @@ function deleteArticulo (req, res) {
 
 function saveArticulo (req, res) {
 	console.log('POST')
-	console.log(req.body.name)
+	console.log(`El body es: ${req.body.name}`)
 
 	let articulo = new Articulo()
 	articulo.name = req.body.name
 	articulo.picture = req.body.picture
 	articulo.category = req.body.category
-	articulo.description = req.body.description
+	articulo.description = req.body.description	
+	articulo.tags.push(req.body.tag)
+	articulo.tags.push(req.body.tag2)
+	console.log(`El articulo es: ${articulo}`)
 
 	articulo.save((err, articuloStored) => {
 		if (err) res.status(500).send({message: `Error al salvar en la base de datos: ${err}`})
