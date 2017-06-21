@@ -1,6 +1,7 @@
 'user strict'
 
-const Articulo = require('../models/articulo')
+const Articulo = require('../models/articulo'),
+	Category = require('../models/category')
 
 function getArticulo (req, res) {
 	let articuloId = req.params.articuloId
@@ -9,7 +10,11 @@ function getArticulo (req, res) {
 		if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
 		if (!articulo) return res.status(404).send({messade: `El articulo no existe`})
 
-		res.status(200).send({ articulo }) // Bondad de Ecmascript6 product: product
+		Category.populate(articulo, {path: "category"}, (err, articulo) => {
+			console.log('Deberias mostrarme el nombre de la categoria')
+			res.status(200).send({ articulo }) // Bondad de Ecmascript6 product: product
+		})
+		
 	})	
 }
 
