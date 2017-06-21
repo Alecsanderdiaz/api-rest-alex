@@ -6,7 +6,7 @@ const Schema = mongoose.Schema
 const ArticuloSchema = Schema({
 	name: String,
 	picture: String,
-	category: {type: String, enum: ['web', 'ios', 'android']},
+	category: { type: Schema.ObjectId, ref: "Category" },
 	description: String
 })
 
