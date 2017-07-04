@@ -8,7 +8,7 @@ function saveCategory (req, res) {
 
 	let category = new Category()
 	category.name = req.body.name
-
+	category.parent = req.body.parent
 	category.save((err,categoryStored) => {
 		if (err) res.status(500).send({message: `Error al salvar en la base de datos: ${err}`})
 
