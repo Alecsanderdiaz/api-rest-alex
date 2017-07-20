@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  if(user)
+    ul
+      li
+        img(src= user.photo)
+      li Bienvenido #{user.name}
+      li
+        a(href='user/signout') Salir
+  else
+    ul
+      li
+        a(href='user/oauth/twitter') Login con Twitter
+      li
+        a(href='user/oauth/facebook') Login con Facebook

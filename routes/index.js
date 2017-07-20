@@ -9,6 +9,7 @@ const tagCtrl = require('../controllers/tag')
 // const auth = require('../middlewares/auth')
 const api = express.Router()
 
+api.get('/', articuloCtrl.index)
 api.get('/articulo', articuloCtrl.getArticulos)
 api.get('/articulo/:articuloId', articuloCtrl.getArticulo)
 api.post('/articulo', articuloCtrl.saveArticulo)

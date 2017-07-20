@@ -4,6 +4,10 @@ const Articulo = require('../models/articulo'),
 	Category = require('../models/category'),
 	Tag = require('../models/tag')
 
+function index (req, res) {
+	res.status(200).send({message: `Hola`})
+}
+
 function getArticulo (req, res) {
 	let articuloId = req.params.articuloId
 
